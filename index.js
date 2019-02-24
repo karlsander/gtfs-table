@@ -10,6 +10,7 @@ const request = require("request");
 const parseCsv = require("csv-parser");
 const stringify = require("csv-stringify");
 const fs = require("fs");
+const path = require("path");
 const stripBomStream = require("strip-bom-stream");
 const sanitize = require("sanitize-filename");
 
@@ -113,10 +114,14 @@ async function main(folderName = "out") {
   rowsForFiles.forEach(file =>
     stringify(file.data, { header: false }, (err, output) => {
       if (err) throw err;
-      fs.writeFile(`${folderName}/${file.fileName}.csv`, output, err => {
-        if (err) throw err;
-        console.log(`${folderName}/${file.fileName}.csv saved`);
-      });
+      fs.writeFile(
+        path.join(folderName, file.fileName + ".csv"),
+        output,
+        err => {
+          if (err) throw err;
+          console.log(`${path.join(folderName, file.fileName + ".csv")} saved`);
+        }
+      );
     })
   );
 }
