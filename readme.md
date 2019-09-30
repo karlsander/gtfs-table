@@ -1,3 +1,7 @@
+# Warning
+
+⚠️ I wrote this with a limited understanding of gtfs and i'm not working on it. I don't think produces correct results.
+
 # gtfs-table
 
 A quick command line script to fetch a gtfs archive and generate timetables as csv for spreadsheet import.
