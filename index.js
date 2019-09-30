@@ -57,7 +57,11 @@ async function main(folderName = "out") {
   console.log("reading routes");
   const routes = await readRoutes(readFile);
   console.log("reading schedules");
-  const schedules = await computeSchedules(readFile, {}, trip => trip.route_id);
+  const schedules = await computeSchedules(
+    readFile,
+    {},
+    trip => trip.trips[0].routeId
+  );
   //console.log("reading services");
   //const services = await readServices(readFile, "Europe/Berlin");
 
@@ -80,12 +84,7 @@ async function main(folderName = "out") {
   console.log(`mapped ${withStopNames.length} schedules`);
 
   const rowsForFiles = withStopNames.map(s => ({
-    fileName:
-      routes[s.route_id].route_long_name !== ""
-        ? sanitize(
-            routes[s.route_id].route_long_name.substr(0, 200) + " " + s.route_id
-          )
-        : s.route_id,
+    fileName: s.id,
     data: [
       [
         "Days",
