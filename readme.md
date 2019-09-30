@@ -1,6 +1,6 @@
 # Warning
 
-⚠️ I wrote this with a limited understanding of gtfs and i'm not working on it. I don't think produces correct results.
+⚠️ I wrote this with a limited understanding of gtfs and i'm not working on it. I don't think it produces correct results.
 
 # gtfs-table
 
